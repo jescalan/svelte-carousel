@@ -14,11 +14,23 @@ const production = !process.env.ROLLUP_WATCH
 
 const docsConfig = {
   input: 'src/docs/main.js',
-  outputFormat: 'iife',
-  outputFile: 'docs/index.js',
+  output: {
+    sourcemap: false,
+    format: 'iife',
+    name: 'app',
+    file: 'docs/index.js'
+  }
 }
 
-const getConfig = () => docsConfig
+const prodConfig = {
+  input: 'src/main.js',
+  output: [
+    { format: 'iife', file: 'build.js', exports: 'named', name: 'app' },
+    { format: 'es', file: 'build.mjs', exports: 'named', name: 'app' }
+  ]
+}
+
+const getConfig = () => process.env.BUILD_PROD ? prodConfig : docsConfig
 
 function serve() {
   let server
@@ -47,12 +59,7 @@ function serve() {
 
 export default {
   input: getConfig().input,
-  output: {
-    sourcemap: false,
-    format: getConfig().outputFormat,
-    name: 'app',
-    file: getConfig().outputFile,
-  },
+  output: getConfig().output,
   plugins: [
     svelte({
       compilerOptions: {

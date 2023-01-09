@@ -2,8 +2,8 @@
   "name": "svelte-carousel",
   "version": "1.0.20",
   "description": "Svelte carousel",
-  "main": "src/main.js",
-  "type": "module",
+  "main": "build.js",
+  "module": "build.mjs",
   "author": "vadimkorr",
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "start": "sirv docs",
     "storybook": "start-storybook -p 6006",
     "build:docs": "rollup -c",
+    "build:prod": "BUILD_PROD=true rollup -c",
     "dev:docs": "rollup -c -w",
     "test": "jest"
   },
@@ -48,7 +49,7 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-import-css": "^2.0.1",
     "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-svelte": "^7.0.0",
+    "rollup-plugin-svelte": "^7.1.0",
     "rollup-plugin-terser": "^7.0.0",
     "sirv-cli": "^1.0.11",
     "svelte": "^3.31.2",
