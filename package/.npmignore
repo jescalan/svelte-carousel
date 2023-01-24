@@ -1,0 +1,13 @@
+docs
+src/docs
+
+stories
+.storybook
+storybook-static
+
+# dist
+scripts
+
+src/**/*.test.js
+
+DEPLOYMENT.md
